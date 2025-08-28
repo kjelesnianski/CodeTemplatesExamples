@@ -8,19 +8,29 @@
 #define MAGIC_NUM_LEN 4
 #define JSON_FILE_LEN 4
 
+std::string getFilenameFromPath(const std::string& path) {
+    size_t lastSlashPos = path.find_last_of("/\\");
+
+    if (lastSlashPos != std::string::npos) {
+        return path.substr(lastSlashPos + 1);
+    } else {
+        return path;
+    }
+}
 /* ret: returns number of bytes written
  */
 int writeToBinary(
-    const std::string& binaryFile,
+    const std::string& binaryPath,
     const std::unique_ptr<const char[]>& magicNumber,
     const std::string jsonFile = "")
 {
+  std::string binaryFile = getFilenameFromPath(binaryPath);
   std::string outputFile = jsonFile.empty() ? (binaryFile + ".00") : (binaryFile + ".V");
 
   //Open file binary mode
-  std::ifstream in(binaryFile, std::ios::binary);
+  std::ifstream in(binaryPath, std::ios::binary);
   if(!in) {
-    std::cout << "Could not open binary file: " << binaryFile << std::endl;
+    std::cout << "Could not open binary file: " << binaryPath << std::endl;
     return 1;
   }
 
