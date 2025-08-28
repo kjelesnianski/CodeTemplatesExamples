@@ -18,8 +18,12 @@ Variant         AAAAAAAAAAAAAAAAAAAAWXYZBBBBBBBSIZE
                   - Still need to confirm the variant has a valid magic number (WXYZ)
 
 - Task 2:
-    - Extract the appended JSON data and write to a temp file
-    - Print JSON data
-    - Run binary with given runtime params
-    - Update JSON runtime param data, save JSON file, and append again to
-      binary to create a new variant
+  - Extract the appended JSON data and write to a temp file
+  - Print JSON data
+  - Run binary with given runtime params
+  - Update JSON runtime param data, save JSON file, and append again to
+    binary to create a new variant
+
+- Task 3:
+  - Write a program that takes in a binary file, a magic number, and a JSON
+    file and appends these to the end of the file to write a "variant" file
